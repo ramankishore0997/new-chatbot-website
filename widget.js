@@ -4,11 +4,9 @@
  * Usage: <script src="https://your-domain.com/widget.js" data-server="https://your-domain.com"></script>
  */
 (function () {
-  // Prevent duplicate injection
   if (window.__GrowthPilotWidgetLoaded) return;
   window.__GrowthPilotWidgetLoaded = true;
 
-  // Auto-detect backend server URL from script tag or fallback to current origin
   const currentScript = document.currentScript || document.querySelector('script[src*="widget.js"]');
   let SERVER_URL = currentScript ? (currentScript.getAttribute('data-server') || '') : '';
   if (!SERVER_URL && currentScript && currentScript.src) {
@@ -19,7 +17,6 @@
   }
   if (!SERVER_URL) SERVER_URL = window.location.origin;
 
-  // Session ID
   let visitorId = localStorage.getItem('gp_chat_visitor_id');
   if (!visitorId) {
     visitorId = 'visitor_' + Math.random().toString(36).substring(2, 7);
@@ -30,7 +27,6 @@
   let isSoundOn = true;
   let lastTimestamp = 0;
 
-  // Audio synthesizer chime
   function playChime(type) {
     if (!isSoundOn) return;
     try {
@@ -58,7 +54,6 @@
     } catch (e) {}
   }
 
-  // Inject Widget Styles
   const style = document.createElement('style');
   style.innerHTML = `
     #gp-widget-root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
@@ -113,13 +108,12 @@
     .gp-quick-btn {
       background: white; border: 1px solid #cbd5e1; padding: 6px 12px;
       border-radius: 20px; font-size: 12px; font-weight: 600; color: #334155;
-      cursor: pointer; transition: all 0.2s;
+      cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center;
     }
     .gp-quick-btn:hover { background: #eff6ff; color: #2563eb; border-color: #93c5fd; }
   `;
   document.head.appendChild(style);
 
-  // Inject Widget DOM
   const root = document.createElement('div');
   root.id = 'gp-widget-root';
   root.innerHTML = `
@@ -135,7 +129,10 @@
             </div>
           </div>
         </div>
-        <button id="gp-close-btn" style="background:none; border:none; color:white; font-size:20px; cursor:pointer; padding:4px;">✕</button>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" style="color:#86efac; text-decoration:none; font-size:12px; font-weight:bold; background:rgba(255,255,255,0.15); padding:3px 8px; border-radius:8px;">WhatsApp</a>
+          <button id="gp-close-btn" style="background:none; border:none; color:white; font-size:20px; cursor:pointer; padding:4px;">✕</button>
+        </div>
       </div>
 
       <div class="gp-body" id="gp-messages">
@@ -143,7 +140,7 @@
           👋 Hi! How can we help you today? Leave a message and our team will reply directly to your chat.
         </div>
         <div id="gp-quick-box" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;">
-          <button class="gp-quick-btn" onclick="window.__gpSendQuick('I need pricing information')">💰 Pricing</button>
+          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" class="gp-quick-btn" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:bold;">📱 WhatsApp (8377950798)</a>
           <button class="gp-quick-btn" onclick="window.__gpSendQuick('I want to talk to an expert')">👨‍💻 Talk to Expert</button>
           <button class="gp-quick-btn" onclick="window.__gpSendQuick('I want to get started')">🚀 Get Started</button>
         </div>
@@ -154,7 +151,7 @@
           <input id="gp-input" type="text" placeholder="Type a message..." style="flex:1; padding:9px 14px; border-radius:20px; border:1px solid #cbd5e1; outline:none; font-size:13px;" />
           <button type="submit" style="width:36px; height:36px; border-radius:50%; background:#2563eb; color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold;">➤</button>
         </form>
-        <div style="text-align:center; font-size:10px; color:#94a3b8; margin-top:6px;">⚡ Connected via Telegram Live Chat</div>
+        <div style="text-align:center; font-size:10px; color:#94a3b8; margin-top:6px;">⚡ Connected via Telegram & WhatsApp (8377950798)</div>
       </div>
     </div>
 
@@ -226,7 +223,6 @@
     sendMsg(val);
   });
 
-  // Background Poller for real-time Telegram agent replies
   async function poll() {
     try {
       const res = await fetch(`${SERVER_URL}/api/chat/poll?sessionId=${visitorId}&after=${lastTimestamp}`);
