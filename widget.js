@@ -186,6 +186,19 @@
   launcher.addEventListener('click', toggle);
   closeBtn.addEventListener('click', toggle);
 
+  // Track Meta Pixel CompleteRegistration when clicking WhatsApp in widget
+  root.addEventListener('click', function(e) {
+    const wa = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
+    if (wa && typeof window.fbq === 'function') {
+      try {
+        window.fbq('track', 'CompleteRegistration', {
+          content_name: 'Widget WhatsApp Click',
+          status: 'success'
+        });
+      } catch (err) {}
+    }
+  }, true);
+
   function appendMsg(text, isVisitor, senderName) {
     const div = document.createElement('div');
     div.className = isVisitor ? 'gp-msg-visitor' : 'gp-msg-agent';

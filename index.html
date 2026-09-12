@@ -6,6 +6,26 @@
   <title>GrowthPilot — Integrate Live Chatbot on Your Website & Boost Sales</title>
   <meta name="description" content="Integrate a powerful live chatbot on your website to engage visitors, capture qualified leads 24/7, and skyrocket your sales conversions." />
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2223759848468655');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2223759848468655&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1135,10 +1155,33 @@
   </div>
 
 
-  <!-- ================================================================ -->
-  <!-- ===================== JAVASCRIPT LOGIC ========================= -->
-  <!-- ================================================================ -->
   <script>
+    // ==================== META PIXEL EVENT TRACKING ====================
+    function trackWhatsAppClick(sourceName = 'WhatsApp Click') {
+      try {
+        if (typeof fbq === 'function') {
+          fbq('track', 'CompleteRegistration', {
+            content_name: sourceName,
+            status: 'success',
+            value: 0.00,
+            currency: 'INR'
+          });
+          console.log('🎯 [Meta Pixel] CompleteRegistration event fired successfully! Source:', sourceName);
+        }
+      } catch (err) {
+        console.warn('[Meta Pixel] Error firing event:', err);
+      }
+    }
+
+    // Capture ANY WhatsApp click on the page (links, buttons, dynamic chat elements)
+    document.addEventListener('click', function (e) {
+      const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"], [data-whatsapp-track], .whatsapp-click');
+      if (waLink) {
+        const label = waLink.getAttribute('data-whatsapp-track') || waLink.innerText.trim() || 'WhatsApp CTA';
+        trackWhatsAppClick(label);
+      }
+    }, true);
+
     let isChatOpen = false;
     let isSoundEnabled = true;
     let lastPolledTimestamp = 0;
