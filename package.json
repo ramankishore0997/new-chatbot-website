@@ -1,0 +1,21 @@
+{
+  "name": "growthpilot-telegram-chatbot",
+  "version": "1.0.0",
+  "description": "High-Converting Digital Marketing Agency Landing Page with Real-Time 2-Way Website-to-Telegram Live Chatbot SaaS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "chatbot",
+    "telegram-bot",
+    "live-chat",
+    "saas",
+    "marketing-agency",
+    "growthpilot",
+    "whatsapp"
+  ],
+  "author": "Raman Kishore",
+  "license": "MIT"
+}

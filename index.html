@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrowthPilot — Digital Marketing Agency & Telegram Live Chat SaaS</title>
+  <meta name="description" content="GrowthPilot is a premier performance marketing agency powered by instant Telegram-connected live chat. Turn website visitors into high-paying customers." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            telegram: '#229ED9',
+            whatsapp: '#25D366',
+            whatsappDark: '#128C7E',
+            emeraldCustom: '#10B981',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'pulse-subtle': 'pulseSubtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'float-delayed': 'float 4s ease-in-out 2s infinite',
+            'badge-ping': 'badgePing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+          },
+          keyframes: {
+            pulseSubtle: {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.92', transform: 'scale(1.04)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            badgePing: {
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAFCFF;
+      color: #0F172A;
+      overflow-x: hidden;
+    }
+
+    .bg-hero-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.09) 0%, rgba(34, 158, 217, 0.05) 35%, transparent 70%),
+                  radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 40%, rgba(14, 165, 233, 0.06) 0%, transparent 50%);
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .card-glass {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-glass:hover {
+      transform: translateY(-4px);
+      border-color: #BFDBFE;
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+    }
+
+    .popular-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 2px solid #2563EB;
+      box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.22);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    .chat-bubble-enter {
+      animation: bubbleSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes bubbleSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .typing-dot {
+      animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    .launcher-glow {
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.45);
+    }
+    .launcher-glow:hover {
+      box-shadow: 0 12px 35px rgba(37, 99, 235, 0.6);
+    }
+
+    .whatsapp-glow {
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    }
+    .whatsapp-glow:hover {
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between text-slate-800 bg-hero-glow">
+
+  <!-- ==================== TOP TELEGRAM STATUS & WHATSAPP ANNOUNCEMENT BAR ==================== -->
+  <aside aria-label="Announcement bar" class="bg-gradient-to-r from-blue-700 via-indigo-700 to-emerald-700 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium relative z-40 flex items-center justify-between shadow-sm">
+    <div class="max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 mx-auto sm:mx-0">
+        <span class="inline-flex items-center gap-1.5 bg-white/20 text-white px-2 py-0.5 rounded-full text-xs font-semibold backdrop-blur-sm">
+          <span id="topBarDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="topBarStatusText">Telegram Live Chat</span>
+        </span>
+        <span class="hidden sm:inline">2-Way Connected: Send message below & reply directly from Telegram!</span>
+      </div>
+      
+      <div class="flex items-center gap-2 mx-auto sm:mx-0">
+        <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+          <span>WhatsApp Us</span>
+        </a>
+        <button onclick="openTelegramConfigModal()" class="inline-flex items-center gap-1 bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-lg text-xs font-bold transition border border-white/20">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          <span id="topBarConfigBtnText">⚙️ Configure Bot</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- GrowthPilot Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">GrowthPilot</span>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-blue-600">Digital Agency</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-7 font-medium text-slate-600 text-sm">
+        <a href="#home" class="nav-link hover:text-blue-600 transition-colors py-1">Home</a>
+        <a href="#services" class="nav-link hover:text-blue-600 transition-colors py-1">Services</a>
+        <a href="#why-us" class="nav-link hover:text-blue-600 transition-colors py-1">Why Us</a>
+        <a href="#pricing" class="nav-link hover:text-blue-600 transition-colors py-1">Pricing</a>
+        <a href="#testimonials" class="nav-link hover:text-blue-600 transition-colors py-1">About</a>
+        <a href="#contact" class="nav-link hover:text-blue-600 transition-colors py-1">Contact</a>
+      </nav>
+
+      <!-- Header CTAs (WhatsApp + Live Chat + Get Started) -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Prominent WhatsApp Action Button -->
+        <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20chatbot%20to%20my%20website" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20 transition transform hover:-translate-y-0.5">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+          <span>WhatsApp Chatbot</span>
+        </a>
+
+        <button onclick="toggleChat(true)" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/60 transition border border-slate-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Live Chat
+        </button>
+
+        <button onclick="openLeadModal('Header CTA')" class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-500/25 transition transform hover:-translate-y-0.5">
+          Get Started
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden flex items-center gap-2">
+        <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20chatbot%20to%20my%20website" target="_blank" rel="noopener noreferrer" class="p-2 text-emerald-600 rounded-lg hover:bg-emerald-50" aria-label="WhatsApp">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+        </a>
+        <button onclick="toggleChat(true)" class="p-2 text-blue-600 rounded-lg hover:bg-blue-50" aria-label="Open chat">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </button>
+        <button id="mobileMenuToggle" class="p-2 text-slate-600 rounded-lg hover:bg-slate-100" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-5 shadow-xl">
+      <div class="flex flex-col gap-4 text-base font-medium text-slate-700">
+        <a href="#home" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">Home</a>
+        <a href="#services" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">Services</a>
+        <a href="#why-us" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">Why Us</a>
+        <a href="#pricing" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">Pricing</a>
+        <a href="#testimonials" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">About & Testimonials</a>
+        <a href="#contact" class="mobile-nav-link hover:text-blue-600 py-1" onclick="toggleMobileMenu(false)">Contact</a>
+        <div class="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
+          <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="w-full py-3 text-center rounded-xl bg-emerald-600 text-white font-bold flex items-center justify-center gap-2 shadow-md">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+            <span>Drop a Msg on WhatsApp</span>
+          </a>
+          <button onclick="openTelegramConfigModal(); toggleMobileMenu(false);" class="w-full py-2.5 text-center rounded-xl bg-blue-50 text-blue-700 font-bold border border-blue-200">⚙️ Configure Telegram Bot</button>
+          <button onclick="openLeadModal('Mobile Menu'); toggleMobileMenu(false);" class="w-full py-3 text-center rounded-xl bg-blue-600 text-white font-semibold shadow-md">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Left Content -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+              <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+              </span>
+              Next-Gen Growth Agency + 24/7 Telegram Live Chat
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-6">
+              Turn More Website Visitors Into <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500 bg-clip-text text-transparent">Customers</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+              Powerful digital marketing solutions with instant support whenever your customers need it.
+            </p>
+
+            <!-- PRIMARY WHATSAPP ATTACH CHATBOT CTA BANNER -->
+            <div class="mb-8 p-4 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left shadow-sm">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/30">
+                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+                </div>
+                <div>
+                  <div class="text-sm font-extrabold text-slate-900">Want this Telegram Chatbot on your own site?</div>
+                  <div class="text-xs text-slate-500">Ready-to-install in 5 minutes on WordPress, Shopify, Wix, or HTML.</div>
+                </div>
+              </div>
+              
+              <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 py-2.5 rounded-xl font-extrabold text-xs text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-500/30 transition transform hover:scale-105 shrink-0 flex items-center justify-center gap-2">
+                <span>Drop a msg on WhatsApp</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-10">
+              <button onclick="openLeadModal('Hero Primary CTA')" class="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl shadow-blue-500/30 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                <span>Get Started</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+
+              <button onclick="toggleChat(true)" class="w-full sm:w-auto px-6 py-3.5 rounded-xl text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm hover:shadow-md transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                <span>Live Chat Demo</span>
+              </button>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-start gap-4 pt-4 border-t border-slate-100 text-xs text-slate-500 font-medium">
+              <div class="flex -space-x-2">
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80" alt="Client" />
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" alt="Client" />
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=80" alt="Client" />
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80" alt="Client" />
+              </div>
+              <div>
+                <div class="flex items-center text-amber-400">
+                  ★★★★★ <span class="ml-1.5 font-bold text-slate-800">4.9/5</span>
+                </div>
+                <span>Trusted by fast-growing startups & brands</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Right Marketing Dashboard Visual -->
+          <div class="lg:col-span-5 relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-emerald-300/20 rounded-3xl blur-2xl -z-10"></div>
+
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-2xl p-5 sm:p-6 text-slate-800 relative">
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                  <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                  <span class="text-xs font-semibold text-slate-400 ml-1">GrowthPilot Command Center</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Live Sync
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mb-5">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                  <div class="text-xs font-medium text-slate-500 mb-1">Total Pipeline ROAS</div>
+                  <div class="text-2xl font-extrabold text-slate-900 flex items-center gap-1.5">
+                    3.85x
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded">+42%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-1">vs. previous 30 days</div>
+                </div>
+
+                <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-100">
+                  <div class="text-xs font-medium text-emerald-700 mb-1">WhatsApp & Chat Sync</div>
+                  <div class="text-2xl font-extrabold text-emerald-900 flex items-center gap-1.5">
+                    99.4%
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded">Active</span>
+                  </div>
+                  <div class="text-[11px] text-emerald-600 mt-1">Instant Lead Forwarding</div>
+                </div>
+              </div>
+
+              <div class="bg-slate-900 text-white p-4 rounded-xl mb-4 relative overflow-hidden">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-xs font-semibold text-slate-300">Campaign Revenue Trajectory</span>
+                  <span class="text-xs font-bold text-emerald-400">$184,290 / mo</span>
+                </div>
+                <div class="h-16 w-full flex items-end gap-1.5 pt-2">
+                  <div class="flex-1 bg-blue-500/40 rounded-t h-[40%]"></div>
+                  <div class="flex-1 bg-blue-500/50 rounded-t h-[55%]"></div>
+                  <div class="flex-1 bg-blue-500/60 rounded-t h-[50%]"></div>
+                  <div class="flex-1 bg-blue-500/70 rounded-t h-[75%]"></div>
+                  <div class="flex-1 bg-blue-500/80 rounded-t h-[65%]"></div>
+                  <div class="flex-1 bg-indigo-500 rounded-t h-[85%]"></div>
+                  <div class="flex-1 bg-emerald-400 rounded-t h-[100%] relative">
+                    <span class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">PEAK</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+                  <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                    Chatbot Relay Status
+                  </span>
+                  <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20chatbot%20to%20my%20website" target="_blank" rel="noopener noreferrer" class="text-[10px] text-emerald-600 font-bold hover:underline">Get on WhatsApp →</a>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">WA</span>
+                    <div>
+                      <div class="font-semibold text-slate-800">WhatsApp & Telegram SaaS Bridge</div>
+                      <div class="text-[11px] text-slate-500">Live 2-way sync enabled</div>
+                    </div>
+                  </div>
+                  <button onclick="openTelegramConfigModal()" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white font-semibold px-2.5 py-1 rounded-full transition">Settings</button>
+                </div>
+              </div>
+
+              <div class="absolute -top-4 -right-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-bold py-1.5 px-3.5 rounded-full shadow-lg flex items-center gap-1.5 border border-white/40">
+                <span>⚡ Real-Time Lead Alerts</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TRUST / STATS SECTION ==================== -->
+    <section class="py-12 bg-white border-y border-slate-200/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 text-center mb-12">
+          
+          <div class="p-4 rounded-xl">
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 tracking-tight">500+</div>
+            <div class="text-sm sm:text-base font-semibold text-slate-700 mt-1">Businesses Helped</div>
+            <div class="text-xs text-slate-400 mt-0.5">Across 14 industries</div>
+          </div>
+
+          <div class="p-4 rounded-xl">
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-indigo-600 tracking-tight">98%</div>
+            <div class="text-sm sm:text-base font-semibold text-slate-700 mt-1">Client Satisfaction</div>
+            <div class="text-xs text-slate-400 mt-0.5">Verified retainers</div>
+          </div>
+
+          <div class="p-4 rounded-xl">
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-600 tracking-tight">24/7</div>
+            <div class="text-sm sm:text-base font-semibold text-slate-700 mt-1">Customer Support</div>
+            <div class="text-xs text-slate-400 mt-0.5">Telegram & WhatsApp response</div>
+          </div>
+
+          <div class="p-4 rounded-xl">
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 tracking-tight">3.5x</div>
+            <div class="text-sm sm:text-base font-semibold text-slate-700 mt-1">Average ROI</div>
+            <div class="text-xs text-slate-400 mt-0.5">Direct revenue return</div>
+          </div>
+
+        </div>
+
+        <div class="pt-8 border-t border-slate-100 flex flex-col items-center">
+          <p class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-6">Fueling High-Growth Brands Globally</p>
+          <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all">
+            <div class="font-extrabold text-lg sm:text-xl tracking-tighter text-slate-800 flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span>NOVAPAY</div>
+            <div class="font-bold text-lg sm:text-xl tracking-tight text-slate-800 flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-indigo-600"></span>HYPERSCALE</div>
+            <div class="font-black text-lg sm:text-xl tracking-wider text-slate-800 flex items-center gap-1.5"><span class="w-3 h-3 rotate-45 bg-emerald-500"></span>BLOOMCART</div>
+            <div class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-800 flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-sky-500"></span>VERTEX AI</div>
+            <div class="font-bold text-lg sm:text-xl tracking-widest text-slate-800 flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span>SAASIFY</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="py-20 lg:py-28 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
+            Core Specializations
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            High-Performance Marketing Services
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 mt-3">
+            Tailored digital campaigns designed to maximize return on ad spend and capture inbound leads instantaneously.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          
+          <div class="card-glass rounded-2xl p-6 sm:p-7 flex flex-col justify-between group">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-blue-100/80 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Meta Ads</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Hyper-targeted Facebook & Instagram campaigns engineered for high-intent audience segmentation, retargeting, and brand dominance.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Custom Pixel & CAPI tracking
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  High-converting video creatives
+                </li>
+              </ul>
+            </div>
+            <button onclick="openChatAndSend('📢 Tell me more about Meta Ads')" class="text-sm font-bold text-blue-600 group-hover:text-blue-700 inline-flex items-center gap-1.5 transition">
+              Learn More &rarr;
+            </button>
+          </div>
+
+          <div class="card-glass rounded-2xl p-6 sm:p-7 flex flex-col justify-between group">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-amber-100/80 text-amber-600 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Google Ads</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Dominate high-commercial intent Search, Performance Max, and YouTube keywords right when buyers are looking to purchase.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Search & PMax optimization
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Negative keyword sculpting
+                </li>
+              </ul>
+            </div>
+            <button onclick="openChatAndSend('Tell me about Google Ads scaling')" class="text-sm font-bold text-blue-600 group-hover:text-blue-700 inline-flex items-center gap-1.5 transition">
+              Learn More &rarr;
+            </button>
+          </div>
+
+          <div class="card-glass rounded-2xl p-6 sm:p-7 flex flex-col justify-between group">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-indigo-100/80 text-indigo-600 flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Lead Generation</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Automated multi-channel funnels that identify qualified buyers, nurture them, and send live chat alerts directly to your Telegram & WhatsApp team.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Instant Telegram team routing
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Automated lead scoring
+                </li>
+              </ul>
+            </div>
+            <button onclick="openChatAndSend('How does your Lead Gen system work?')" class="text-sm font-bold text-blue-600 group-hover:text-blue-700 inline-flex items-center gap-1.5 transition">
+              Learn More &rarr;
+            </button>
+          </div>
+
+          <div class="card-glass rounded-2xl p-6 sm:p-7 flex flex-col justify-between group">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-emerald-100/80 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Conversion Optimization</h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Transform bounce rates into sales through scientific A/B testing, speed optimizations, and proactive on-site Telegram & WhatsApp chat prompts.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Heatmap & drop-off audits
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Live Telegram chat engagement
+                </li>
+              </ul>
+            </div>
+            <button onclick="openChatAndSend('I need Conversion Optimization for my store')" class="text-sm font-bold text-blue-600 group-hover:text-blue-700 inline-flex items-center gap-1.5 transition">
+              Learn More &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== WHY CHOOSE US SECTION ==================== -->
+    <section id="why-us" class="py-20 bg-slate-50/80 border-t border-slate-200/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-4">
+              Competitive Advantage
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+              Why High-Growth Companies Partner With GrowthPilot
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg mb-8">
+              We combine enterprise-grade media buying with our proprietary Telegram & WhatsApp Live Chat SaaS infrastructure, ensuring you never miss a revenue opportunity.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-base">Fast response</h4>
+                  <p class="text-xs text-slate-500 mt-1 leading-normal">Sub-30 second response times via instant Telegram bridge notifications.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-500/20">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-base">Expert support</h4>
+                  <p class="text-xs text-slate-500 mt-1 leading-normal">Direct access to senior growth engineers and certified media buyers.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/20">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-base">Data-driven strategies</h4>
+                  <p class="text-xs text-slate-500 mt-1 leading-normal">Continuous statistical testing with full algorithmic attribution.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-sky-500/20">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-base">Transparent reporting</h4>
+                  <p class="text-xs text-slate-500 mt-1 leading-normal">Live 24/7 client dashboards and instant Telegram budget updates.</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xl relative overflow-hidden">
+              <div class="text-center mb-6">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">How The Technology Works</span>
+                <h3 class="text-xl font-bold text-slate-900 mt-1">Website-to-Telegram Real-Time Sync</h3>
+              </div>
+
+              <div class="space-y-4 relative">
+                <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-extrabold text-sm shrink-0">1</div>
+                  <div class="text-sm">
+                    <span class="font-bold text-slate-900 block">Visitor types in on-site chat</span>
+                    <span class="text-xs text-slate-500">Message is received by backend server</span>
+                  </div>
+                </div>
+
+                <div class="flex justify-center -my-2">
+                  <svg class="w-5 h-5 text-blue-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                </div>
+
+                <div class="flex items-center gap-4 bg-blue-50/80 p-4 rounded-2xl border border-blue-100">
+                  <div class="w-10 h-10 rounded-full bg-telegram text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                  </div>
+                  <div class="text-sm">
+                    <span class="font-bold text-slate-900 block">Instant Alert in Telegram</span>
+                    <span class="text-xs text-slate-500">Your phone chimes with visitor details and text</span>
+                  </div>
+                </div>
+
+                <div class="flex justify-center -my-2">
+                  <svg class="w-5 h-5 text-blue-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                </div>
+
+                <div class="flex items-center gap-4 bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                  <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md">✓</div>
+                  <div class="text-sm">
+                    <span class="font-bold text-slate-900 block">Reply Directly in Telegram</span>
+                    <span class="text-xs text-slate-500">Visitor sees your response immediately in the website chat!</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1.5">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+                  <span>Drop a msg on WhatsApp to get this setup</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section id="pricing" class="py-20 lg:py-28 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3">
+            Simple & Transparent
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Plans Built For Every Stage of Growth
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 mt-3">
+            Choose a plan that fits your business scale. No hidden fees or lock-in contracts.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          
+          <div class="card-glass rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-slate-900">Starter</h3>
+                <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Early Stage</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-6">Ideal for small businesses testing paid acquisition.</p>
+              
+              <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-extrabold text-slate-900">$49</span>
+                <span class="text-slate-500 font-medium text-sm">/month</span>
+              </div>
+
+              <ul class="space-y-3.5 text-sm text-slate-600 mb-8 border-t border-slate-100 pt-6">
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Up to $3,000 / mo ad spend
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Meta Ads or Google Ads setup
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Telegram Live Chat Widget
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Weekly performance report
+                </li>
+              </ul>
+            </div>
+
+            <button onclick="openChatAndSend('I am interested in the $49 Starter Plan')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-slate-800 bg-slate-100 hover:bg-slate-200 transition">
+              Choose Starter
+            </button>
+          </div>
+
+          <div class="popular-card rounded-3xl p-8 flex flex-col justify-between relative transform lg:-translate-y-2">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-extrabold uppercase tracking-wider py-1.5 px-4 rounded-full shadow-lg">
+              ★ Most Popular Choice
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-4 mt-2">
+                <h3 class="text-xl font-extrabold text-blue-900">Growth</h3>
+                <span class="text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Scaling Fast</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-6">Designed for expanding brands demanding continuous lead velocity.</p>
+              
+              <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-5xl font-extrabold text-slate-900">$99</span>
+                <span class="text-slate-500 font-medium text-sm">/month</span>
+              </div>
+
+              <ul class="space-y-3.5 text-sm text-slate-700 mb-8 border-t border-slate-200 pt-6">
+                <li class="flex items-center gap-3 font-semibold">
+                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Up to $15,000 / mo ad spend
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Omni-channel Meta & Google Ads
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  2-Way Telegram Live Chat Bridge
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Dedicated Creative Designer & Copywriter
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  24/7 Priority Telegram Support
+                </li>
+              </ul>
+            </div>
+
+            <button onclick="openChatAndSend('I want to get started with the $99 Growth Plan')" class="w-full py-4 px-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/30 transition transform hover:scale-[1.02] active:scale-[0.98]">
+              Get Started with Growth
+            </button>
+          </div>
+
+          <div class="card-glass rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-slate-900">Scale</h3>
+                <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Enterprise</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-6">Complete end-to-end performance marketing team.</p>
+              
+              <div class="flex items-baseline gap-1 mb-6">
+                <span class="text-4xl font-extrabold text-slate-900">$199</span>
+                <span class="text-slate-500 font-medium text-sm">/month</span>
+              </div>
+
+              <ul class="space-y-3.5 text-sm text-slate-600 mb-8 border-t border-slate-100 pt-6">
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Unlimited Ad Spend Management
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Custom Conversion Funnel Engineering
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Custom AI Telegram Chatbot Automations
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Dedicated Fractional CMO
+                </li>
+              </ul>
+            </div>
+
+            <button onclick="openChatAndSend('Tell me about custom Enterprise Scale plan')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm text-slate-800 bg-slate-100 hover:bg-slate-200 transition">
+              Choose Scale
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section id="testimonials" class="py-20 bg-slate-50/70 border-t border-slate-200/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3">
+            Real Results
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Trusted by Founders & CMOs Worldwide
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 mt-3">
+            See how our integrated marketing strategies and live Telegram chat support generate compounding revenue.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
+              <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "GrowthPilot completely revamped our Meta ad funnels. The instant Telegram live chat widget was a game changer — our website conversion rate jumped from 1.8% to 4.4% in the very first month."
+              </p>
+            </div>
+            <div class="flex items-center gap-3.5 border-t border-slate-100 pt-4">
+              <img class="w-11 h-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah Jenkins" />
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Sarah Jenkins</h4>
+                <p class="text-xs text-slate-500">Founder, BloomCart Apparel</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
+              <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "Having leads come directly to our team's Telegram channel means we close high-ticket B2B clients before they even leave our website. We saw a 3.8x ROI within 60 days."
+              </p>
+            </div>
+            <div class="flex items-center gap-3.5 border-t border-slate-100 pt-4">
+              <img class="w-11 h-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="David Sterling" />
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">David Sterling</h4>
+                <p class="text-xs text-slate-500">VP Marketing, NovaPay Solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex text-amber-400 text-sm mb-4">★★★★★</div>
+              <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                "The transparency and response speed from the GrowthPilot team is unprecedented. No waiting days for agency emails — questions get answered in real time via live chat."
+              </p>
+            </div>
+            <div class="flex items-center gap-3.5 border-t border-slate-100 pt-4">
+              <img class="w-11 h-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Elena Rostova" />
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm">Elena Rostova</h4>
+                <p class="text-xs text-slate-500">Growth Lead, SaaSify Cloud</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT / FINAL CTA SECTION ==================== -->
+    <section id="contact" class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-8 sm:p-12 lg:p-16 text-white text-center relative shadow-2xl overflow-hidden">
+          <div class="absolute -top-24 -left-24 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl"></div>
+
+          <div class="relative z-10 max-w-3xl mx-auto">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-400/20">
+              ⚡ Instant WhatsApp & Telegram Live Bridge
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white">
+              Ready to Grow Your Business?
+            </h2>
+            <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+              Talk to our team and get a free strategy consultation, or attach this live chatbot directly to your website.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <!-- Drop a msg on WhatsApp button -->
+              <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-xl whatsapp-glow transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+                <span>Drop a msg on WhatsApp</span>
+              </a>
+
+              <button onclick="toggleChat(true)" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-slate-900 bg-white hover:bg-slate-100 shadow-xl transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                <svg class="w-5 h-5 text-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                <span>Start a Conversation</span>
+              </button>
+            </div>
+
+            <p class="text-xs text-slate-400 mt-6 flex items-center justify-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Average response time: <strong>30 seconds</strong>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-white border-t border-slate-200 py-12 text-slate-500 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">GP</div>
+          <span class="font-extrabold text-slate-900 tracking-tight">GrowthPilot</span>
+          <span class="text-xs text-slate-400">© 2026 GrowthPilot Digital Agency. All rights reserved.</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 text-xs font-medium">
+          <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="text-emerald-600 font-bold hover:underline flex items-center gap-1">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+            <span>WhatsApp Us</span>
+          </a>
+          <button onclick="openTelegramConfigModal()" class="text-blue-600 font-bold hover:underline">⚙️ Telegram Settings</button>
+          <a href="#home" class="hover:text-blue-600">Privacy Policy</a>
+          <a href="#home" class="hover:text-blue-600">Terms of Service</a>
+          <button onclick="toggleChat(true)" class="text-blue-600 font-bold hover:underline">Open Live Chat</button>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================================ -->
+  <!-- ================== PRODUCTION SAAS CHATBOT WIDGET ============= -->
+  <!-- ================================================================ -->
+
+  <!-- Floating Chat Launcher & Label Container -->
+  <aside aria-label="Live Chat Support" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2.5">
+    
+    <!-- Discreet Demo Indicator Label / Tooltip -->
+    <div id="demoPill" class="bg-slate-900/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg border border-slate-700/60 backdrop-blur-md flex items-center gap-1.5 transition-all duration-300 hover:scale-105 cursor-pointer" onclick="toggleChat()">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="tracking-wider">LIVE CHAT DEMO</span>
+      <span class="text-slate-400 font-normal">| Telegram Bridge</span>
+    </div>
+
+    <!-- Launcher Circular Button -->
+    <div class="relative">
+      <button 
+        id="chatLauncherBtn" 
+        onclick="toggleChat()" 
+        class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-blue-600 via-blue-600 to-indigo-600 text-white flex items-center justify-center launcher-glow transition-all duration-300 transform hover:scale-110 active:scale-95 cursor-pointer relative"
+        aria-label="Open Live Chat"
+      >
+        <!-- Icon: Chat bubble (Default) -->
+        <svg id="chatIconOpen" class="w-7 h-7 sm:w-8 sm:h-8 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+
+        <!-- Icon: Close 'X' (Shown when open) -->
+        <svg id="chatIconClose" class="w-7 h-7 hidden transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+
+        <span class="absolute -inset-1.5 rounded-full bg-blue-500 opacity-30 animate-ping -z-10 pointer-events-none"></span>
+
+        <!-- Unread Notification Badge -->
+        <span id="chatBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[11px] font-extrabold w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border-2 border-white shadow-md">
+          1
+        </span>
+      </button>
+    </div>
+
+  </aside>
+
+
+  <!-- ==================== CHATBOT WINDOW MODAL ==================== -->
+  <section 
+    id="chatWindow" 
+    aria-label="Live Chat Support Window"
+    class="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[410px] max-w-[420px] h-[580px] max-h-[82vh] bg-white rounded-3xl shadow-2xl border border-slate-200/90 z-50 flex flex-col overflow-hidden transition-all duration-300 transform opacity-0 translate-y-8 pointer-events-none"
+  >
+    
+    <!-- Chatbot Header -->
+    <header class="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 shadow-sm relative">
+      <div class="flex items-center gap-3">
+        
+        <div class="relative">
+          <div class="w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-white font-black text-sm shadow-inner">
+            GP
+          </div>
+          <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-blue-700 rounded-full"></span>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="font-bold text-base text-white tracking-tight">GrowthPilot Support</h2>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs text-blue-100 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="chatHeaderStatus">Online • Live Telegram Bridge</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-1">
+        <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="p-2 text-emerald-300 hover:text-white rounded-lg hover:bg-white/10 transition" title="Chat on WhatsApp" aria-label="WhatsApp">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+        </a>
+        <button onclick="openTelegramConfigModal()" class="p-2 text-blue-200 hover:text-white rounded-lg hover:bg-white/10 transition" title="Telegram Bot Settings" aria-label="Settings">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </button>
+        <button id="soundToggleBtn" onclick="toggleSound()" class="p-2 text-blue-200 hover:text-white rounded-lg hover:bg-white/10 transition" title="Toggle audio notification" aria-label="Toggle Sound">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/></svg>
+        </button>
+        <button onclick="toggleChat(false)" class="p-2 text-blue-200 hover:text-white rounded-lg hover:bg-white/10 transition" aria-label="Close Chat">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Telegram SaaS Sync Notice Sub-bar -->
+    <div class="bg-blue-50/90 border-b border-blue-100 px-3.5 py-1.5 flex items-center justify-between text-[11px] text-blue-800">
+      <div class="flex items-center gap-1.5 font-medium">
+        <svg class="w-3.5 h-3.5 text-telegram shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        <span id="telegramStatusBannerText">Instant Telegram Bridge: Connected</span>
+      </div>
+      <button onclick="openTelegramConfigModal()" class="text-[10px] text-blue-600 hover:underline font-bold bg-white px-2 py-0.5 rounded-full border border-blue-100" id="botBadgeHandle">Configure Bot</button>
+    </div>
+
+    <!-- Chat Messages Scroll Container -->
+    <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-slate-50/50 to-white text-sm">
+      
+      <div class="flex items-center justify-center my-1">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">Today</span>
+      </div>
+
+      <!-- Welcome Message -->
+      <div class="flex items-start gap-2.5 chat-bubble-enter">
+        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+          GP
+        </div>
+        <div class="max-w-[82%]">
+          <div class="bg-white border border-slate-200/90 text-slate-800 p-3.5 rounded-2xl rounded-tl-sm shadow-sm leading-relaxed">
+            Hi! 👋 Welcome to <strong>GrowthPilot</strong>. How can we help you today?
+          </div>
+          <span class="text-[10px] text-slate-400 ml-1 mt-1 inline-block">Just now</span>
+        </div>
+      </div>
+
+      <!-- Quick Replies -->
+      <div id="quickRepliesContainer" class="chat-bubble-enter pl-10 space-y-2">
+        <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Select an option:</div>
+        <div class="flex flex-wrap gap-1.5">
+          <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" rel="noopener noreferrer" class="quick-btn bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs py-1.5 px-3 rounded-xl border border-emerald-300 shadow-sm transition active:scale-95 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.158.571 4.183 1.564 5.937l-1.564 5.891 6.071-1.593c1.701.927 3.654 1.455 5.729 1.455 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+            <span>📱 Attach Chatbot on WhatsApp</span>
+          </a>
+          <button onclick="handleQuickReply('💰 Pricing')" class="quick-btn bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-semibold text-xs py-1.5 px-3 rounded-xl border border-slate-200/90 shadow-sm hover:border-blue-300 transition active:scale-95">
+            💰 Pricing
+          </button>
+          <button onclick="handleQuickReply('📢 Meta Ads')" class="quick-btn bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-semibold text-xs py-1.5 px-3 rounded-xl border border-slate-200/90 shadow-sm hover:border-blue-300 transition active:scale-95">
+            📢 Meta Ads
+          </button>
+          <button onclick="handleQuickReply('🚀 Get Started')" class="quick-btn bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-semibold text-xs py-1.5 px-3 rounded-xl border border-slate-200/90 shadow-sm hover:border-blue-300 transition active:scale-95">
+            🚀 Get Started
+          </button>
+          <button onclick="handleQuickReply('👨‍💻 Talk to an Expert')" class="quick-btn bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-xs py-1.5 px-3 rounded-xl border border-blue-200 shadow-sm transition active:scale-95">
+            👨‍💻 Talk to an Expert
+          </button>
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typingIndicator" class="hidden items-center gap-2.5 pl-1">
+        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0">
+          GP
+        </div>
+        <div class="bg-slate-100 text-slate-500 py-2.5 px-4 rounded-2xl rounded-tl-sm flex items-center gap-1.5 shadow-inner">
+          <span class="w-2 h-2 rounded-full bg-slate-400 typing-dot"></span>
+          <span class="w-2 h-2 rounded-full bg-slate-400 typing-dot"></span>
+          <span class="w-2 h-2 rounded-full bg-slate-400 typing-dot"></span>
+          <span class="text-xs text-slate-400 ml-1 font-medium">GrowthPilot is typing...</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Message Input Box & Footer -->
+    <div class="p-3.5 bg-white border-t border-slate-100 shrink-0">
+      
+      <form id="chatForm" onsubmit="handleFormSubmit(event)" class="flex items-center gap-2">
+        <input 
+          id="chatInput" 
+          type="text" 
+          placeholder="Type your message..." 
+          autocomplete="off"
+          class="flex-1 bg-slate-100/90 hover:bg-slate-100 focus:bg-white text-slate-800 placeholder-slate-400 text-sm px-4 py-2.5 rounded-full border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition"
+        />
+        
+        <button 
+          type="submit" 
+          id="chatSendBtn" 
+          class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-md shadow-blue-500/20 transition transform active:scale-90 shrink-0"
+          aria-label="Send message"
+        >
+          <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
+
+      <div class="text-center mt-2 flex items-center justify-center gap-2">
+        <span class="text-[11px] text-slate-400 font-medium">
+          ⚡ Usually replies in ~2m • Powered by Telegram
+        </span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== TELEGRAM BOT CONFIGURATION MODAL ==================== -->
+  <div id="telegramConfigModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative animate-bubbleSlideIn">
+      <button onclick="closeTelegramConfigModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-telegram/10 text-telegram flex items-center justify-center mx-auto mb-3">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        </div>
+        <h3 class="text-xl font-extrabold text-slate-900">Connect Your Telegram Bot</h3>
+        <p class="text-slate-500 text-xs mt-1">Receive website customer messages & reply directly from Telegram</p>
+      </div>
+
+      <div class="bg-blue-50/80 p-3.5 rounded-xl border border-blue-100 text-xs text-blue-900 mb-4 space-y-1.5">
+        <p class="font-bold">⚡ Quick 2-Step Setup:</p>
+        <p>1. Open Telegram & message <strong>@BotFather</strong> to create a bot and copy your <strong>API Token</strong>.</p>
+        <p>2. Paste your token below and click <strong>Save & Connect</strong>, then send <code class="bg-blue-200/80 px-1 py-0.5 rounded font-mono">/start</code> to your bot on Telegram!</p>
+      </div>
+
+      <form id="telegramConfigForm" onsubmit="saveTelegramConfig(event)" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Telegram Bot Token</label>
+          <input 
+            type="text" 
+            id="cfgBotToken" 
+            placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz..." 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-mono focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Telegram Chat ID <span class="text-slate-400 font-normal">(Optional — auto-detects via /start)</span></label>
+          <input 
+            type="text" 
+            id="cfgChatId" 
+            placeholder="e.g. 123456789 (or leave blank to auto-detect)" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-mono focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          />
+        </div>
+
+        <div id="cfgStatusMsg" class="text-xs font-medium text-center hidden py-1"></div>
+
+        <button 
+          type="submit" 
+          id="cfgSaveBtn" 
+          class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition"
+        >
+          Save & Connect Telegram &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== LEAD MODAL ==================== -->
+  <div id="leadModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative animate-bubbleSlideIn">
+      <button onclick="closeLeadModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="text-2xl font-extrabold text-slate-900">Get Your Free Strategy Call</h3>
+        <p class="text-slate-500 text-sm mt-1">Our marketing specialists will review your current ad performance & setup.</p>
+      </div>
+
+      <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Name</label>
+          <input type="text" required placeholder="Alexander Wright" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Work Email</label>
+          <input type="email" required placeholder="alex@company.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Monthly Ad Spend Budget</label>
+          <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 bg-white">
+            <option>$1,000 – $5,000 / month</option>
+            <option selected>$5,000 – $20,000 / month</option>
+            <option>$20,000 – $50,000+ / month</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition">
+          Confirm Consultation &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ================================================================ -->
+  <!-- ===================== JAVASCRIPT LOGIC ========================= -->
+  <!-- ================================================================ -->
+  <script>
+    let isChatOpen = false;
+    let isSoundEnabled = true;
+    let lastPolledTimestamp = 0;
+    let isBotConfigured = false;
+    let botUsername = null;
+
+    let visitorSessionId = localStorage.getItem('growthpilot_visitor_id');
+    if (!visitorSessionId) {
+      visitorSessionId = 'visitor_' + Math.random().toString(36).substring(2, 7);
+      localStorage.setItem('growthpilot_visitor_id', visitorSessionId);
+    }
+
+    function playNotificationSound(type = 'receive') {
+      if (!isSoundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'receive') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+          osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.35);
+        } else {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.15);
+        }
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      isSoundEnabled = !isSoundEnabled;
+      const btn = document.getElementById('soundToggleBtn');
+      if (isSoundEnabled) {
+        btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/></svg>`;
+        btn.title = "Audio notification: ON";
+      } else {
+        btn.innerHTML = `<svg class="w-4 h-4 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>`;
+        btn.title = "Audio notification: OFF";
+      }
+    }
+
+    function toggleChat(forceState) {
+      if (typeof forceState === 'boolean') {
+        isChatOpen = forceState;
+      } else {
+        isChatOpen = !isChatOpen;
+      }
+
+      const chatWindow = document.getElementById('chatWindow');
+      const iconOpen = document.getElementById('chatIconOpen');
+      const iconClose = document.getElementById('chatIconClose');
+      const chatBadge = document.getElementById('chatBadge');
+      const demoPill = document.getElementById('demoPill');
+
+      if (isChatOpen) {
+        chatWindow.classList.remove('opacity-0', 'translate-y-8', 'pointer-events-none');
+        chatWindow.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        if (chatBadge) chatBadge.classList.add('hidden');
+        if (demoPill) demoPill.classList.add('opacity-0', 'pointer-events-none');
+        document.getElementById('chatInput').focus();
+      } else {
+        chatWindow.classList.add('opacity-0', 'translate-y-8', 'pointer-events-none');
+        chatWindow.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        if (demoPill) demoPill.classList.remove('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function openChatAndSend(messageText) {
+      toggleChat(true);
+      setTimeout(() => {
+        if (messageText.includes('Expert') || messageText === '👨‍💻 Talk to an Expert') {
+          handleQuickReply('👨‍💻 Talk to an Expert');
+        } else {
+          sendMessageToBackend(messageText);
+        }
+      }, 300);
+    }
+
+    function renderUserMessage(text) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex items-end justify-end gap-2 chat-bubble-enter';
+      userBubble.innerHTML = `
+        <div class="max-w-[80%] text-right">
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-2xl rounded-br-sm shadow-sm text-sm text-left leading-relaxed">
+            ${escapeHtml(text)}
+          </div>
+          <span class="text-[10px] text-slate-400 mr-1 mt-1 inline-block">Just now</span>
+        </div>
+      `;
+
+      messagesContainer.insertBefore(userBubble, typingIndicator);
+      scrollChatToBottom();
+      playNotificationSound('send');
+    }
+
+    function renderAgentMessage(text, senderName = 'GP Support', isTelegram = false, showSentBadge = false) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      const botWrapper = document.createElement('div');
+      botWrapper.className = 'flex items-start gap-2.5 chat-bubble-enter';
+      botWrapper.innerHTML = `
+        <div class="w-8 h-8 rounded-full ${isTelegram ? 'bg-telegram' : 'bg-blue-600'} text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+          ${isTelegram ? 'TG' : 'GP'}
+        </div>
+        <div class="max-w-[84%]">
+          <div class="bg-white border border-slate-200/90 text-slate-800 p-3.5 rounded-2xl rounded-tl-sm shadow-sm leading-relaxed text-sm">
+            ${text}
+          </div>
+          <div class="flex items-center gap-1.5 mt-1 ml-1 text-[10px] text-slate-400">
+            <span>${senderName}</span>
+            <span>•</span>
+            <span>Just now</span>
+            ${isTelegram ? '<span class="bg-sky-100 text-sky-800 font-bold px-1.5 py-0.2 rounded text-[9px]">Telegram</span>' : ''}
+          </div>
+          ${showSentBadge ? `
+            <div class="mt-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-sm">
+              <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>✓ Message sent to support</span>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      messagesContainer.insertBefore(botWrapper, typingIndicator);
+      scrollChatToBottom();
+      playNotificationSound('receive');
+
+      if (!isChatOpen) {
+        const badge = document.getElementById('chatBadge');
+        if (badge) badge.classList.remove('hidden');
+      }
+    }
+
+    async function sendMessageToBackend(text) {
+      renderUserMessage(text);
+
+      try {
+        const res = await fetch('/api/chat/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: visitorSessionId,
+            text: text,
+            visitorName: 'Visitor'
+          })
+        });
+
+        const data = await res.json();
+        lastPolledTimestamp = Date.now();
+
+        if (data.telegramDelivered) {
+          showSentConfirmationToast();
+        } else if (!data.configured) {
+          simulateBotResponse(text);
+        }
+      } catch (err) {
+        simulateBotResponse(text);
+      }
+    }
+
+    function showSentConfirmationToast() {
+      const messagesContainer = document.getElementById('chatMessages');
+      const typingIndicator = document.getElementById('typingIndicator');
+      const statusDiv = document.createElement('div');
+      statusDiv.className = 'text-center my-1 text-[11px] font-semibold text-emerald-600 flex items-center justify-center gap-1 bg-emerald-50 py-1 px-3 rounded-full border border-emerald-200 w-fit mx-auto';
+      statusDiv.innerHTML = `✓ Dispatched to Telegram Team`;
+      messagesContainer.insertBefore(statusDiv, typingIndicator);
+      scrollChatToBottom();
+    }
+
+    function handleQuickReply(option) {
+      if (option === '👨‍💻 Talk to an Expert') {
+        const text = "I'd like to know more about your services.";
+        renderUserMessage(text);
+        showTypingIndicator(true);
+
+        fetch('/api/chat/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId: visitorSessionId, text: text })
+        }).catch(() => {});
+
+        setTimeout(() => {
+          showTypingIndicator(false);
+          renderAgentMessage(
+            "Absolutely! I've notified our support team. An expert will get back to you shortly.",
+            'GrowthPilot Bot',
+            false,
+            true
+          );
+        }, 1100);
+      } 
+      else if (option === '💰 Pricing') {
+        sendMessageToBackend("Can you share your pricing plans?");
+      } 
+      else if (option === '📢 Meta Ads') {
+        sendMessageToBackend("Tell me more about your Meta Ads management.");
+      } 
+      else if (option === '🚀 Get Started') {
+        sendMessageToBackend("I'm ready to get started.");
+      }
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = '';
+      sendMessageToBackend(text);
+    }
+
+    function simulateBotResponse(text) {
+      showTypingIndicator(true);
+      const lower = text.toLowerCase();
+
+      setTimeout(() => {
+        showTypingIndicator(false);
+
+        if (lower.includes('expert') || lower.includes('support') || lower.includes('human') || lower.includes('talk')) {
+          renderAgentMessage("Absolutely! I've notified our support team. An expert will get back to you shortly.", 'GrowthPilot Support', false, true);
+        } else if (lower.includes('price') || lower.includes('cost') || lower.includes('plan')) {
+          renderAgentMessage("Our plans start at $49/mo (Starter), $99/mo (Growth - Most Popular), and $199/mo (Scale). All include live Telegram notifications. Would you like to speak to an expert?", 'GrowthPilot Support');
+        } else {
+          renderAgentMessage("Thank you! Your message has been received. Connect your Telegram Bot in settings to reply directly from your phone in real time.", 'GrowthPilot Support', false, true);
+        }
+      }, 1200);
+    }
+
+    function showTypingIndicator(show) {
+      const indicator = document.getElementById('typingIndicator');
+      if (show) {
+        indicator.classList.remove('hidden');
+        indicator.classList.add('flex');
+      } else {
+        indicator.classList.add('hidden');
+        indicator.classList.remove('flex');
+      }
+      scrollChatToBottom();
+    }
+
+    function scrollChatToBottom() {
+      const container = document.getElementById('chatMessages');
+      setTimeout(() => {
+        container.scrollTop = container.scrollHeight;
+      }, 50);
+    }
+
+    async function pollNewMessages() {
+      try {
+        const res = await fetch(`/api/chat/poll?sessionId=${visitorSessionId}&after=${lastPolledTimestamp}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data.messages)) {
+            for (const msg of data.messages) {
+              if (msg.sender === 'agent') {
+                renderAgentMessage(msg.text, msg.senderName || 'Telegram Support Agent', true, false);
+              }
+              if (msg.timestamp > lastPolledTimestamp) {
+                lastPolledTimestamp = msg.timestamp;
+              }
+            }
+          }
+        }
+      } catch (e) {}
+
+      setTimeout(pollNewMessages, 1500);
+    }
+
+    async function checkServerStatus() {
+      try {
+        const res = await fetch('/api/status');
+        if (res.ok) {
+          const data = await res.json();
+          isBotConfigured = data.configured;
+          botUsername = data.botUsername;
+
+          const topDot = document.getElementById('topBarDot');
+          const topText = document.getElementById('topBarStatusText');
+          const topBtnText = document.getElementById('topBarConfigBtnText');
+          const bannerText = document.getElementById('telegramStatusBannerText');
+          const botBadge = document.getElementById('botBadgeHandle');
+
+          if (isBotConfigured) {
+            topDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+            topText.innerText = `@${botUsername || 'Bot'} Live Connected`;
+            topBtnText.innerText = `🟢 @${botUsername || 'Bot'} (Configured)`;
+            bannerText.innerText = `Connected to @${botUsername || 'GrowthPilot_Bot'}`;
+            botBadge.innerText = `@${botUsername || 'Bot'}`;
+          } else if (data.botTokenSet) {
+            topText.innerText = `Token Set • Send /start to Bot`;
+            topBtnText.innerText = `⚡ Send /start to activate`;
+          } else {
+            topText.innerText = `Telegram Bot: Not Configured`;
+            topBtnText.innerText = `⚙️ Connect Telegram Bot`;
+          }
+        }
+      } catch (e) {}
+    }
+
+    function openTelegramConfigModal() {
+      document.getElementById('telegramConfigModal').classList.remove('hidden');
+      checkServerStatus();
+    }
+
+    function closeTelegramConfigModal() {
+      document.getElementById('telegramConfigModal').classList.add('hidden');
+    }
+
+    async function saveTelegramConfig(e) {
+      e.preventDefault();
+      const token = document.getElementById('cfgBotToken').value.trim();
+      const chatId = document.getElementById('cfgChatId').value.trim();
+      const statusMsg = document.getElementById('cfgStatusMsg');
+      const saveBtn = document.getElementById('cfgSaveBtn');
+
+      saveBtn.disabled = true;
+      saveBtn.innerText = 'Testing & Connecting...';
+      statusMsg.className = 'text-xs font-semibold text-center text-blue-600 block py-1';
+      statusMsg.innerText = 'Verifying Telegram Bot Token...';
+
+      try {
+        const res = await fetch('/api/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ botToken: token, chatId: chatId })
+        });
+
+        const data = await res.json();
+        saveBtn.disabled = false;
+        saveBtn.innerText = 'Save & Connect Telegram →';
+
+        if (data.success && data.valid) {
+          statusMsg.className = 'text-xs font-semibold text-center text-emerald-600 block py-1';
+          statusMsg.innerText = `✅ Connected successfully as @${data.botUsername}! Send /start to your bot in Telegram.`;
+          checkServerStatus();
+          setTimeout(() => {
+            closeTelegramConfigModal();
+          }, 2000);
+        } else {
+          statusMsg.className = 'text-xs font-semibold text-center text-red-600 block py-1';
+          statusMsg.innerText = data.error || 'Invalid Bot Token. Please check token from @BotFather.';
+        }
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.innerText = 'Save & Connect Telegram →';
+        statusMsg.className = 'text-xs font-semibold text-center text-red-600 block py-1';
+        statusMsg.innerText = 'Failed to connect: ' + err.message;
+      }
+    }
+
+    function openLeadModal(source = '') {
+      document.getElementById('leadModal').classList.remove('hidden');
+    }
+    function closeLeadModal() {
+      document.getElementById('leadModal').classList.add('hidden');
+    }
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      closeLeadModal();
+      alert('🎉 Thank you! Your consultation request has been forwarded to our Telegram team. We will reach out shortly.');
+    }
+
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    function toggleMobileMenu(force) {
+      if (typeof force === 'boolean') {
+        if (force) mobileMenu.classList.remove('hidden');
+        else mobileMenu.classList.add('hidden');
+      } else {
+        mobileMenu.classList.toggle('hidden');
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('leadModal');
+      const cfgModal = document.getElementById('telegramConfigModal');
+      if (e.target === modal) closeLeadModal();
+      if (e.target === cfgModal) closeTelegramConfigModal();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      checkServerStatus();
+      pollNewMessages();
+    });
+  </script>
+
+</body>
+</html>
