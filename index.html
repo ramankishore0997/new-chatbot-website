@@ -1294,6 +1294,9 @@
     async function sendMessageToBackend(text) {
       renderUserMessage(text);
 
+      // Trigger automatic demo notice in English
+      simulateBotResponse(text);
+
       try {
         const res = await fetch('/api/chat/send', {
           method: 'POST',
@@ -1310,11 +1313,9 @@
 
         if (data.telegramDelivered) {
           showSentConfirmationToast();
-        } else if (!data.configured) {
-          simulateBotResponse(text);
         }
       } catch (err) {
-        simulateBotResponse(text);
+        // Fallback already handled by simulateBotResponse
       }
     }
 
@@ -1329,33 +1330,7 @@
     }
 
     function handleQuickReply(option) {
-      if (option === '👨‍💻 Talk to an Expert') {
-        const text = "I'd like to know more about your services.";
-        renderUserMessage(text);
-        showTypingIndicator(true);
-
-        fetch('/api/chat/send', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId: visitorSessionId, text: text })
-        }).catch(() => {});
-
-        setTimeout(() => {
-          showTypingIndicator(false);
-          renderAgentMessage(
-            "Absolutely! I've notified our growth team. An expert will reply to you shortly. You can also chat with us directly on WhatsApp at <strong>+91 8377950798</strong>.",
-            'GrowthPilot Bot',
-            false,
-            true
-          );
-        }, 1100);
-      } 
-      else if (option === '🚀 Integrate Chatbot on My Website') {
-        sendMessageToBackend("How can I integrate this chatbot on my website?");
-      }
-      else if (option === '📢 Meta Ads') {
-        sendMessageToBackend("Tell me more about your Meta Ads management.");
-      } 
+      sendMessageToBackend(option);
     }
 
     function handleFormSubmit(e) {
@@ -1370,19 +1345,32 @@
 
     function simulateBotResponse(text) {
       showTypingIndicator(true);
-      const lower = text.toLowerCase();
 
       setTimeout(() => {
         showTypingIndicator(false);
 
-        if (lower.includes('expert') || lower.includes('support') || lower.includes('human') || lower.includes('talk')) {
-          renderAgentMessage("Absolutely! Our team is available. You can also reach us directly on WhatsApp at <strong>+91 8377950798</strong> for immediate setup.", 'GrowthPilot Support', false, true);
-        } else if (lower.includes('integrate') || lower.includes('website') || lower.includes('chatbot') || lower.includes('sales')) {
-          renderAgentMessage("We can integrate this live chatbot on your website in just 5 minutes! Message us on WhatsApp at <strong>8377950798</strong> or leave your email/phone number here.", 'GrowthPilot Support');
-        } else {
-          renderAgentMessage("Thank you for reaching out! We have received your message. You can also message us directly on WhatsApp at <strong>8377950798</strong>.", 'GrowthPilot Support', false, true);
-        }
-      }, 1200);
+        const demoMessage = `
+          <div class="space-y-2">
+            <p class="font-semibold text-slate-900 flex items-center gap-1.5">
+              <span>⚠️</span> <span>Preview Demo Notice</span>
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              This is currently a <strong>preview demo</strong> of the chatbot and is not fully functional on this page.
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              To experience the <strong>full live working demo</strong> and see how it works for your website, please message us directly on WhatsApp:
+            </p>
+            <div class="pt-1.5">
+              <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20see%20the%20full%20live%20working%20demo%20of%20the%20chatbot" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm shadow-emerald-600/20">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.842-.981z"/></svg>
+                <span>Chat on WhatsApp (+91 8377950798) &rarr;</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        renderAgentMessage(demoMessage, 'GrowthPilot Assistant', false, false);
+      }, 900);
     }
 
     function showTypingIndicator(show) {

@@ -189,7 +189,7 @@
   function appendMsg(text, isVisitor, senderName) {
     const div = document.createElement('div');
     div.className = isVisitor ? 'gp-msg-visitor' : 'gp-msg-agent';
-    div.innerHTML = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    div.innerHTML = isVisitor ? text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : text;
     messagesBox.appendChild(div);
     messagesBox.scrollTop = messagesBox.scrollHeight;
     playChime(isVisitor ? 'send' : 'receive');
@@ -197,6 +197,28 @@
 
   async function sendMsg(text) {
     appendMsg(text, true);
+
+    // Auto-reply with preview demo notice in English
+    setTimeout(() => {
+      const demoNotice = `
+        <div style="line-height:1.45;">
+          <div style="font-weight:bold; margin-bottom:4px; display:flex; align-items:center; gap:4px; color:#1e293b;">
+            <span>⚠️</span> <span>Preview Demo Notice</span>
+          </div>
+          <div style="font-size:12px; color:#475569; margin-bottom:6px;">
+            This is currently a <strong>preview demo</strong> of the chatbot and is not fully functional on this page.
+          </div>
+          <div style="font-size:12px; color:#475569; margin-bottom:8px;">
+            To see the <strong>full live working demo</strong> and integrate it on your website, please message us on WhatsApp:
+          </div>
+          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20see%20the%20full%20live%20working%20demo%20of%20the%20chatbot" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#10b981; color:white; padding:7px 12px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:11.5px;">
+            <span>💬 Chat on WhatsApp (+91 8377950798) &rarr;</span>
+          </a>
+        </div>
+      `;
+      appendMsg(demoNotice, false, 'GrowthPilot Assistant');
+    }, 800);
+
     try {
       await fetch(SERVER_URL + '/api/chat/send', {
         method: 'POST',
