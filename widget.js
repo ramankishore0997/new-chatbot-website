@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GrowthPilot — Telegram Live Chat Embeddable Widget
  * Add this script to ANY client website (WordPress, Shopify, Webflow, Custom HTML, etc.)
  * Usage: <script src="https://your-domain.com/widget.js" data-server="https://your-domain.com"></script>
@@ -130,7 +130,7 @@
           </div>
         </div>
         <div style="display:flex; align-items:center; gap:6px;">
-          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" style="color:#86efac; text-decoration:none; font-size:12px; font-weight:bold; background:rgba(255,255,255,0.15); padding:3px 8px; border-radius:8px;">WhatsApp</a>
+          <a href="https://wa.me/919711657224?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" style="color:#86efac; text-decoration:none; font-size:12px; font-weight:bold; background:rgba(255,255,255,0.15); padding:3px 8px; border-radius:8px;">WhatsApp</a>
           <button id="gp-close-btn" style="background:none; border:none; color:white; font-size:20px; cursor:pointer; padding:4px;">✕</button>
         </div>
       </div>
@@ -140,7 +140,7 @@
           👋 Hi! How can we help you today? Leave a message and our team will reply directly to your chat.
         </div>
         <div id="gp-quick-box" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;">
-          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" class="gp-quick-btn" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:bold;">📱 WhatsApp (8377950798)</a>
+          <a href="https://wa.me/919711657224?text=Hi%2C%20I%20want%20to%20attach%20this%20Telegram%20live%20chatbot%20on%20my%20website" target="_blank" class="gp-quick-btn" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:bold;">📱 WhatsApp (9711657224)</a>
           <button class="gp-quick-btn" onclick="window.__gpSendQuick('I want to talk to an expert')">👨‍💻 Talk to Expert</button>
           <button class="gp-quick-btn" onclick="window.__gpSendQuick('I want to get started')">🚀 Get Started</button>
         </div>
@@ -151,7 +151,7 @@
           <input id="gp-input" type="text" placeholder="Type a message..." style="flex:1; padding:9px 14px; border-radius:20px; border:1px solid #cbd5e1; outline:none; font-size:13px;" />
           <button type="submit" style="width:36px; height:36px; border-radius:50%; background:#2563eb; color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold;">➤</button>
         </form>
-        <div style="text-align:center; font-size:10px; color:#94a3b8; margin-top:6px;">⚡ Connected via Telegram & WhatsApp (8377950798)</div>
+        <div style="text-align:center; font-size:10px; color:#94a3b8; margin-top:6px;">⚡ Connected via Telegram & WhatsApp (9711657224)</div>
       </div>
     </div>
 
@@ -224,8 +224,8 @@
           <div style="font-size:12px; color:#475569; margin-bottom:8px;">
             To see the <strong>full live working demo</strong> and integrate it on your website, please message us on WhatsApp:
           </div>
-          <a href="https://wa.me/918377950798?text=Hi%2C%20I%20want%20to%20see%20the%20full%20live%20working%20demo%20of%20the%20chatbot" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#10b981; color:white; padding:7px 12px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:11.5px;">
-            <span>💬 Chat on WhatsApp (+91 8377950798) &rarr;</span>
+          <a href="https://wa.me/919711657224?text=Hi%2C%20I%20want%20to%20see%20the%20full%20live%20working%20demo%20of%20the%20chatbot" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#10b981; color:white; padding:7px 12px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:11.5px;">
+            <span>💬 Chat on WhatsApp (+91 9711657224) &rarr;</span>
           </a>
         </div>
       `;
@@ -281,3 +281,4 @@
 
   poll();
 })();
+
